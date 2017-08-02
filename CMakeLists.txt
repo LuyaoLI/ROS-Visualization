@@ -46,11 +46,20 @@ catkin_package(
 
 
 include_directories(
+  include
   ${catkin_INCLUDE_DIRS}
 )
 
+ add_library(TagVisualizer
+   src/TagVisualizer.cpp
+ )
+ target_link_libraries(TagVisualizer
+   ${catkin_LIBRARIES}
+ )
+
 
  add_executable(publisher src/publisher.cpp)
+
  target_link_libraries(publisher
    ${catkin_LIBRARIES}
  )
@@ -60,11 +69,12 @@ include_directories(
  )
 
 
- add_executable(subscribers src/subscribers.cpp)
- target_link_libraries(subscribers
+
+ add_executable(TagVisualizerNode src/TagVisualizerNode.cpp)
+ target_link_libraries(TagVisualizerNode TagVisualizer
    ${catkin_LIBRARIES}
  )
- add_dependencies(subscribers
+ add_dependencies(TagVisualizerNode
   ${catkin_EXPORTED_TARGETS}
 # pub_subs_generate_messages_cpp
  )
