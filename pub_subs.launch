@@ -1,0 +1,4 @@
+<launch>
+  <node name="publisher" pkg="pub_subs" type="publisher" />
+  <node name="tagVisualizerNode" pkg="pub_subs" type="TagVisualizerNode" output="screen"/>
+</launch>

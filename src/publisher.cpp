@@ -7,9 +7,8 @@
 
 
 int main(int argc, char **argv){
-    ros::init(argc, argv, "tag_pose");
-    ros::init(argc, argv, "image_color");
-    ros::init(argc, argv, "tag_detection");
+
+    ros::init(argc, argv, "publisher");
 
     ros::NodeHandle n;
     ros::Publisher tag_pose = n.advertise<geometry_msgs::PoseStamped>("tag_pose", 1000);
@@ -59,7 +58,7 @@ int main(int argc, char **argv){
 
 	msg3.tag_id = 6;
 	msg3.cam_id = 6;
-	msg3.pixel = {0.1, 0.2, 0.3};
+	msg3.pixel = {0.1, 0.2, 0.1, 0.4, 0.5, 0.2, 0.5, 0.4};
 
         ROS_INFO("Message publish: Detection");
 
