@@ -6,7 +6,7 @@ TagVisualizer::TagVisualizer(){
 }
 
 TagVisualizer::TagVisualizer(ros::NodeHandle nh){
-    image_sub = nh.subscribe("image_color", 1000, &TagVisualizer::image_callback, this);
+    image_sub = nh.subscribe("camera/image_mono", 1000, &TagVisualizer::image_callback, this);
     pose_sub = nh.subscribe("tag_pose", 1000, &TagVisualizer::pose_callback, this);
     detection_sub = nh.subscribe("tag_detection", 1000, &TagVisualizer::detection_callback, this);
 }

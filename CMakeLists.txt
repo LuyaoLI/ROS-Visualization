@@ -60,6 +60,14 @@ include_directories(
  )
 
 
+ add_library(LidarPose
+   src/LidarPose.cpp
+ )
+ target_link_libraries(LidarPose
+   ${catkin_LIBRARIES}
+ )
+
+
  add_executable(publisher src/publisher.cpp)
 
  target_link_libraries(publisher
@@ -67,7 +75,6 @@ include_directories(
  )
  add_dependencies(publisher 
  ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS}
-# pub_subs_generate_messages_cpp
  )
 
 
@@ -78,15 +85,15 @@ include_directories(
  )
  add_dependencies(TagVisualizerNode
   ${catkin_EXPORTED_TARGETS}
-# pub_subs_generate_messages_cpp
  )
 
 
- add_executable(Tf_Trans_Pose src/Tf_Trans_Pose.cpp)
- target_link_libraries(Tf_Trans_Pose ${catkin_LIBRARIES})
-  add_dependencies(Tf_Trans_Pose
+ add_executable(LidarPoseNode src/LidarPoseNode.cpp)
+ target_link_libraries(LidarPoseNode LidarPose
+ ${catkin_LIBRARIES}
+ )
+  add_dependencies(LidarPoseNode
   ${catkin_EXPORTED_TARGETS}
-# pub_subs_generate_messages_cpp
  )
 
 
