@@ -7,6 +7,7 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   sensor_msgs
   geometry_msgs
+  tf
   message_generation
 )
 
@@ -36,6 +37,7 @@ find_package(catkin REQUIRED COMPONENTS
    std_msgs
    sensor_msgs
    geometry_msgs
+   tf
    pub_subs
  )
 
@@ -75,6 +77,14 @@ include_directories(
    ${catkin_LIBRARIES}
  )
  add_dependencies(TagVisualizerNode
+  ${catkin_EXPORTED_TARGETS}
+# pub_subs_generate_messages_cpp
+ )
+
+
+ add_executable(Tf_Trans_Pose src/Tf_Trans_Pose.cpp)
+ target_link_libraries(Tf_Trans_Pose ${catkin_LIBRARIES})
+  add_dependencies(Tf_Trans_Pose
   ${catkin_EXPORTED_TARGETS}
 # pub_subs_generate_messages_cpp
  )
